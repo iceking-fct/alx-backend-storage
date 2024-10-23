@@ -16,7 +16,7 @@ class Cache:
         return key
 
 
-        def get(self, key: str, fn: callable = None):
+    def get(self, key: str, fn: callable = None):
         """
         Retrieve data from Redis and optionally apply a conversion function.
         If fn is None, the raw value is returned.
