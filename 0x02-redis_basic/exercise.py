@@ -13,14 +13,13 @@ def count_calls(method: callable) -> callable:
         return method(self, *args, **kwargs)
     return wrapper
 
-
 class Cache:
     def __init__(self):
         """Initialize Redis client and flush database"""
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    @count_calls
+    @count_calls  # Apply the count_calls decorator
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """Store data in Redis with a randomly generated key"""
         key = str(uuid.uuid4())
