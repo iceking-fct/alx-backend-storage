@@ -15,9 +15,8 @@ def count_calls(method: callable) -> callable:
 
 class Cache:
     def __init__(self):
-        """Initialize Redis client and flush database"""
+        """Initialize Redis client (no flushdb to preserve data)"""
         self._redis = redis.Redis()
-        self._redis.flushdb()
 
     @count_calls  # Apply the count_calls decorator
     def store(self, data: Union[str, bytes, int, float]) -> str:
